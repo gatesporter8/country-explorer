@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import getCountries from "../api";
+import { getCountries } from "../api";
 import CountryCard from '../components/CountryCard';
 import FetchError from '../components/FetchError';
 import { CountryContainer, PageContainer } from './styles/CountryListPageStyles';
@@ -9,7 +9,7 @@ const COUNTRY_ROUTE = '/countries';
 
 function CountryListPage() {
 	const [loading, setLoading] = useState(true);
-	const [countryData, setCountryData] = useState([]);
+	const [countriesData, setCountriesData] = useState([]);
 	const [fetchError, setFetchError] = useState(null);
 
 	const navigate = useNavigate();
@@ -32,7 +32,7 @@ function CountryListPage() {
 		setLoading(true)
 		getCountries()
 			.then(data => {
-				setCountryData(data.sort(alphabetize));
+				setCountriesData(data.sort(alphabetize));
 				setLoading(false);
 			})
 			.catch(err => {
@@ -60,7 +60,7 @@ function CountryListPage() {
 			<PageContainer>
 				<h1>COUNTRY EXPLORER</h1>
 				<CountryContainer>
-					{countryData.map((country) => (
+					{countriesData.map((country) => (
 						<CountryCard key={generateKey(country)} country={country} onDoubleClick={() => handleCardClick(country.name.common)}></CountryCard>
 					))}
 				</CountryContainer>
@@ -70,3 +70,5 @@ function CountryListPage() {
 }
 
 export default CountryListPage;
+
+// TODO - Now you should work pulling a particular piece of country data into the CountryShowPage component
