@@ -1,4 +1,4 @@
-function CountryShow({ country }) {
+function CountryShow() {
 	return <div>Country Show</div>;
 }
 

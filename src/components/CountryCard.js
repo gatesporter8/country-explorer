@@ -1,8 +1,8 @@
 import { Card, Flag } from './styles/CountryCardStyles';
 
-function CountryCard({ country }) {
+function CountryCard({ country, onDoubleClick}) {
 	return(
-		<Card>
+		<Card onDoubleClick={onDoubleClick}>
 			<Flag src={country.flags.svg} alt={`${country.name.common}'s flag`}  />
 			<h2>{country.name.common}</h2>
 			<p>Population: {country.population}</p>
@@ -12,10 +12,3 @@ function CountryCard({ country }) {
 }
 
 export default CountryCard;
-
-
-// what information do you want displayed on the CountryCard?
-// Name: country.name.common
-// Flag: country.flag
-// Population: country.population
-// Region: country.region

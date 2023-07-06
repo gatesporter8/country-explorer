@@ -1,13 +1,18 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import getCountries from "../api";
-import CountryCard from './CountryCard';
-import FetchError from './FetchError';
-import { CountryContainer, PageContainer } from './styles/CountryListStyles';
+import CountryCard from '../components/CountryCard';
+import FetchError from '../components/FetchError';
+import { CountryContainer, PageContainer } from './styles/CountryListPageStyles';
 
-function CountryList() {
+const COUNTRY_ROUTE = '/countries';
+
+function CountryListPage() {
 	const [loading, setLoading] = useState(true);
 	const [countryData, setCountryData] = useState([]);
 	const [fetchError, setFetchError] = useState(null);
+
+	const navigate = useNavigate();
 
 	const alphabetize = (a, b) => {
 		let nameA = a.name.common.toUpperCase();
@@ -41,8 +46,9 @@ function CountryList() {
 		return country.name.common
 	}
 
-	const handleCardClick = () => {
-
+	const handleCardClick = (countryName) => {
+		console.log("clicked country card for" + ' ' + countryName)
+		navigate(COUNTRY_ROUTE + "/" + countryName)
 	}
 
 	if (loading) {
@@ -55,18 +61,12 @@ function CountryList() {
 				<h1>COUNTRY EXPLORER</h1>
 				<CountryContainer>
 					{countryData.map((country) => (
-						<CountryCard key={generateKey(country)} country={country} onClick={() => handleCardClick}></CountryCard>
+						<CountryCard key={generateKey(country)} country={country} onDoubleClick={() => handleCardClick(country.name.common)}></CountryCard>
 					))}
 				</CountryContainer>
 			</PageContainer>
 		);
 	}
-
-	// right now your countries list is showing up properly. the style looks a bit lame, but its showing up.
-	// TODO: make the countries show page, make each individual country link to its own countries show page. may need routing.
-	// we have determined that we will need to fetch the country data again, or use context/a state managment libary. Since this project is small, lets just fetch again, using 
-	// the search by name endpoint in the rest countries api.
-
 }
 
-export default CountryList;
+export default CountryListPage;
