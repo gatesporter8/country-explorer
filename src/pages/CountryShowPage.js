@@ -20,7 +20,7 @@ function CountryShow() {
 				setFetchError(err);
 				setLoading(false);
 			})
-	}, []); // rewatch the section of the React tutorial that talks about this error in useEffect tomorrow
+	}, []); // rewatch the section of the React tutorial that talks about this error in useEffect tomorrow!
 
 	return <div>Country Show</div>;
 }
