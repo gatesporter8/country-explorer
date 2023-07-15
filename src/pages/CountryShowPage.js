@@ -1,8 +1,9 @@
 import { getCountryByName } from "../api";
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import FetchError from '../components/FetchError';
 
-function CountryShow() {
+function CountryShowPage() {
 	const { countryName } = useParams();
 	const [loading, setLoading] = useState(true);
 	const [countryData, setCountryData] = useState(null);
@@ -20,9 +21,15 @@ function CountryShow() {
 				setFetchError(err);
 				setLoading(false);
 			})
-	}, []); // rewatch the section of the React tutorial that talks about this error in useEffect tomorrow!
+	}, [countryName]);
 
-	return <div>Country Show</div>;
+	if (loading) {
+		return <div>Loading...</div>;
+	} else if (fetchError) {
+		return <FetchError error={fetchError}></FetchError>;
+	} else {
+		return <div>{countryData.name.common}</div>;
+	}
 }
 
-export default CountryShow;
+export default CountryShowPage;

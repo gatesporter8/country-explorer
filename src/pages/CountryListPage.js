@@ -47,7 +47,7 @@ function CountryListPage() {
 	}
 
 	const handleCardClick = (countryName) => {
-		console.log("clicked country card for" + ' ' + countryName)
+		console.log("clicked country card for " + countryName)
 		navigate(COUNTRY_ROUTE + "/" + countryName)
 	}
 
