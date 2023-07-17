@@ -10,8 +10,13 @@ export const getCountries = async () => {
 	return response.data;
 };
 
-export const getCountryByName = async (countryName) => {
-	const response = await api.get(`/name/${countryName}`);
+export const getCountryByName = async (country) => {
+	let response;
+	if (country.length === 3) { // if it is a country code
+		response = await api.get(`/alpha/${country}`);
+	} else { // if it is a full country name
+		response = await api.get(`/name/${country}`);
+	}
 
 	return response.data[0];
 };

@@ -71,4 +71,6 @@ function CountryListPage() {
 
 export default CountryListPage;
 
-// TODO - Now you should work pulling a particular piece of country data into the CountryShowPage component
+// TODO - Create a CountryDetails component
+// TODO - Flesh out the FetchError stuff
+// TODO - Implement search for the index page
