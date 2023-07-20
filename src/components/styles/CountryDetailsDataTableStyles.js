@@ -26,3 +26,9 @@ export const StyledTh = styled.th`
   border-right: none;
   background-color: #f2f2f2;
 `;
+
+export const StyledTableImg = styled.img`
+	width: 100px;
+	height: auto;
+	object-fit: contain;
+`;

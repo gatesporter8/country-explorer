@@ -10,6 +10,8 @@ export const Title = styled.h1`
   color: #333;
 `;
 
+// In CSS, the em unit is relative to the current font-size of the element or the parent element (if not defined for the current element).
+
 export const FlagImage = styled.img`
     width: 80%;
     height: auto;

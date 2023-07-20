@@ -2,6 +2,8 @@ import { Header, Title, FlagImage } from './styles/CountryDetailStyles';
 import CountryDetailsDataTable from './CountryDetailsDataTable'
 
 function CountryDetails({ countryData }) {
+	debugger
+
 	return (
 		<div>
 			<Header><Title>{countryData.name.common}</Title></Header>

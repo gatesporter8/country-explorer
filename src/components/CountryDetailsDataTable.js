@@ -1,4 +1,4 @@
-import { StyledTable, StyledTd, StyledTh } from './styles/CountryDetailsDataTableStyles';
+import { StyledTable, StyledTd, StyledTh, StyledTableImg } from './styles/CountryDetailsDataTableStyles';
 import { Link } from 'react-router-dom';
 import { Fragment } from 'react';
 
@@ -48,6 +48,14 @@ function CountryDetailsDataTable({ countryData }) {
 				<tr>
           			<StyledTh>Currencies</StyledTh>
           			<StyledTd>{countryData.currencies ? parseCurrency(countryData.currencies) : 'None'}</StyledTd>
+				</tr>
+				<tr>
+          			<StyledTh>Continent(s)</StyledTh>
+          			<StyledTd>{countryData.continents.join(', ')}</StyledTd>
+				</tr>
+				<tr>
+          			<StyledTh>Coat of Arms</StyledTh>
+          			<StyledTd><StyledTableImg src={countryData.coatOfArms.svg} alt={`Coat of Arms of ${countryData.name.common}`}/></StyledTd>
 				</tr>
 				<tr>
           			<StyledTh>Neighboring Countries</StyledTh>
